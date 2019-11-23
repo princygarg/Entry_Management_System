@@ -1,0 +1,47 @@
+<% include partials/header %>
+
+<div class="jumbotron text-center">
+  <h1 class="display-4" style="font-weight: bold;">Entry Management System</h1>
+</div>
+<div class="container text-center">
+		<%  if(error && error.length > 0){ %>
+		  <div class="alert alert-danger" role="alert">
+			<%= error %>
+		  </div>
+		<% } %>  
+		<%  if(success && success.length > 0){ %>
+		  <div class="alert alert-success" role="alert">
+			<%= success %>
+		  </div>
+		<% } %> 
+</div> 
+
+<div class="container" style="margin-top:100px;">
+	<div class="row">
+	  <div class="col-sm-4">
+	  	<div class="card text-center">
+	  		<div class="card-body">
+				<a class="btn btn-success btn-lg" href="/visitor/checkIn" role="button">Visitor Check In</a>
+			</div>
+		</div>
+	  </div>
+
+	  <div class="col-sm-4">
+	  	<div class="card text-center">
+	  		<div class="card-body">
+	  			<a class="btn btn-danger btn-lg" href="/visitor/checkOut" role="button">Visitor Check Out</a>
+	  		</div>
+	  	</div>
+	  </div>
+	  
+	  <div class="col-sm-4">
+	  	<div class="card text-center">
+	  		<div class="card-body">
+	  			<a class="btn btn-success btn-lg" href="/host" role="button"> Host Registration</a>
+	  		</div>
+	  	</div>
+	  </div>
+	</div>
+</div>
+
+<% include partials/footer %>

@@ -1,0 +1,63 @@
+<% include ./partials/header%>
+
+<div class="jumbotron text-center">
+  <h1 class="display-4" style="font-weight: bold;">Enter Visitor Details</h1>
+</div>
+<div class="container text-center">
+		<%  if(error && error.length > 0){ %>
+		  <div class="alert alert-danger" role="alert">
+			<%= error %>
+		  </div>
+		<% } %>  
+		<%  if(success && success.length > 0){ %>
+		  <div class="alert alert-success" role="alert">
+			<%= success %>
+		  </div>
+		<% } %> 
+</div> 
+
+<div class="container" style="margin-top:80px;">
+	<div id="forms">
+		<form action="/visitor/checkIn" method="post">
+		    <div class="form-group row">
+		      <label for="inputName" class="col-sm-3 required">Name</label>
+		      <div class="col-sm-9">
+		      		<input type="text" class="form-control" name="visitor_name" id="inputName" placeholder="Enter name" required>
+			  </div>
+		    </div>
+
+		    <div class="form-group row">
+		      <label for="inputEmail" class="col-sm-3 required">Email</label>
+		       <div class="col-sm-9">
+		      		<input type="email" class="form-control" name="visitor_email" id="inputEmail" placeholder="Enter email" required>
+			  </div>
+		    </div>
+
+		    <div class="form-group row">
+		      <label for="inputPhone" class="col-sm-3 required">Mobile No.</label>
+		       <div class="col-sm-9">
+		      		<input type="tel" class="form-control" name="visitor_phone" id="inputPhone" placeholder="Enter Mobile Number" pattern="[0-9]{10}" required>
+			  </div>
+		    </div>
+		    
+		    <div class="form-group row">
+		      <label for="inputHostEmail" class="col-sm-3">Host Email</label>
+		       <div class="col-sm-9">
+		      		<input type="email" class="form-control" name="host_email" id="inputHostEmail" placeholder="Enter host email (if you have)">
+			  </div>
+		    </div>
+		    
+		    <div class="form-group row">
+		      <label for="inputPassCode" class="col-sm-3 required">Passcode</label>
+		       <div class="col-sm-9">
+		      		<input type="number" class="form-control" name="passcode" id="inputPassCode" placeholder="Enter 4-digit Passcode" min="1000" max="9999" required>
+			  </div>
+		    </div>
+		    <div id="formbutton">
+		    	<button type="submit" class="btn btn-primary btn-lg btn-block">Check In</button>
+		    </div>
+		</form>
+	</div>
+</div>	
+
+<% include ./partials/footer%>

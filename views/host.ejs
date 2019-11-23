@@ -1,0 +1,49 @@
+<% include ./partials/header%>
+
+<div class="jumbotron text-center">
+  <h1 class="display-4" style="font-weight: bold;">Enter Host Details</h1>
+</div>
+<div class="container text-center">
+		<%  if(error && error.length > 0){ %>
+		  <div class="alert alert-danger" role="alert">
+			<%= error %>
+		  </div>
+		<% } %>  
+		<%  if(success && success.length > 0){ %>
+		  <div class="alert alert-success" role="alert">
+			<%= success %>
+		  </div>
+		<% } %> 
+</div> 
+<div class="container" style="margin-top:80px;">
+	<div id="forms">
+		<form action="/host/hostRegister" method="post">
+		    <div class="form-group row">
+		      <label for="inputName" class="col-sm-3 required">Name</label>
+		      <div class="col-sm-9">
+			      <input type="text" class="form-control" name="host_name" id="inputName" placeholder="Enter name" required>
+			  </div>
+		    </div>
+
+		    <div class="form-group row">
+		      <label for="inputEmail" class="col-sm-3 required">Email</label>
+		      <div class="col-sm-9">
+			      <input type="email" class="form-control" name="host_email" id="inputEmail" placeholder="Enter email" required>
+			  </div>
+		    </div>
+
+		    <div class="form-group row">
+		      <label for="inputMobile" class="col-sm-3 required">Mobile No.</label>
+		      <div class="col-sm-9">
+			      <input type="tel" class="form-control" name="host_phone" id="inputMobile" placeholder="Enter Mobile Number" pattern="[0-9]{10}" required>
+			  </div>
+		    </div>
+		    
+			<div id="formbutton">
+		    	<button type="submit" class="btn btn-primary btn-lg btn-block"> Register </button>
+		    </div>
+		</form>
+	</div>
+</div>
+
+<% include ./partials/footer%>
