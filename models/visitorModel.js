@@ -1,6 +1,6 @@
 const db = require("../connection");
 const Cryptr = require('cryptr');
-const cryptr = new Cryptr(process.env.CRYPTO_KEY);
+const cryptr = new Cryptr('myTotalySecretKey');
 
 var Visitor = function(vis){
 	this.visitor_name = vis.visitor_name;
