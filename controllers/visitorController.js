@@ -44,7 +44,21 @@ exports.checkIn = (req, res)=>{
 												if(err){
 													console.log(err);
 												}else{
+													const decryptedcode1 = cryptr.decrypt(new_vis.passcode);
+													// console.log(decryptedcode);
 													
+													var data1 = {
+														email: new_vis.visitor_email,
+														subject: "Your Passcode Details",
+														html: "<h2> Your Details: </h2> <p><strong>Name: </strong> "+ new_vis.visitor_name+"<br></p><p><strong>Passcode: </strong> "+ decryptedcode1 +"<br></p><p>Enter this during checkout.</p>"
+													}
+									
+													EmailSend.sendEmail(data1, (err, result)=>{
+														if(err){
+															console.log(err);
+														}
+													})
+
 													Host.increase_visitor_count(new_vis.host_email, (err, success)=>{
 														if(err){
 															return res.status(500).json({error: err});
