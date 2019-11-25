@@ -24,7 +24,6 @@ exports.checkIn = (req, res)=>{
 				}else{
 
 					Host.get_details(req.body.host_email, (err, host_details)=>{
-						// console.log(host_details);
 						if(err){
 							req.flash("error","Something went wrong... please try again");
 							res.redirect("/");
@@ -47,7 +46,6 @@ exports.checkIn = (req, res)=>{
 													console.log(err);
 												}else{
 													const decryptedcode1 = cryptr.decrypt(new_vis.passcode);
-													// console.log(decryptedcode);
 													
 													var data1 = {
 														email: new_vis.visitor_email,
@@ -78,7 +76,7 @@ exports.checkIn = (req, res)=>{
 															console.log(err);
 														}
 													})
-													// console.log(host_details);
+													
 													const _phone_ = Number(assignedHostDetail.host_phone);
 													var sms = {
 														to: _phone_,
@@ -121,7 +119,7 @@ exports.checkIn = (req, res)=>{
 													console.log(err);
 												}
 											});
-											// console.log(host_details);
+											
 											const _phone_ = Number(host_details.host_phone);
 											var sms = {
 												to: _phone_,
@@ -164,7 +162,7 @@ exports.checkOut = (req, res)=>{
 			}else{
 
 				const decryptedcode = cryptr.decrypt(userInfo.passcode);
-				// console.log(decryptedcode);
+				
 				if(decryptedcode != req.body.passcode){
 					req.flash("error","Invalid email or passcode!");
 					res.redirect("/visitor/checkOut");
@@ -194,11 +192,12 @@ exports.checkOut = (req, res)=>{
 										console.log(err);
 									}
 								})
-								// console.log(userInfo);
+								
 								var sms = {
 									to: userInfo.host_phone,
 									body: "Your check-out details: Name: " + userInfo.visitor_name +" Phone no.: " + userInfo.visitor_phone +" Check-in time: " + userInfo.check_in +" Check-out time: " + new Date() + " Host Name: " + host_data.host_name + " Address Visited: Innovacer, Noida, Delhi."
 								}
+								
 								SMSSend.sendSMS(sms, (err, result)=>{
 									if(err){
 										console.log(err);
