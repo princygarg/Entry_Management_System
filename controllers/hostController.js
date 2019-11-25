@@ -10,7 +10,7 @@ exports.hostRegister = (req, res)=>{
 		req.flash("error","Invalid inputs");
 		res.redirect("/host");
 	}else{
-		Host.check_host_Email(req.body.host_email, (err, result)=>{
+		Host.get_details(req.body.host_email, (err, result)=>{
 			if(err){
 				return res.status(500).json({error: err});
 			}else{

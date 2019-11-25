@@ -3,6 +3,7 @@ const Host = require("../models/hostModel");
 const EmailSend = require("../emailsender");
 const Cryptr = require('cryptr');
 const cryptr = new Cryptr('myTotalySecretKey');
+const SMSSend = require("../send_sms");
 
 exports.checkIn = (req, res)=>{
 
@@ -22,24 +23,25 @@ exports.checkIn = (req, res)=>{
 					res.redirect("/visitor/checkIn");	
 				}else{
 
-					Host.check_host_Email(req.body.host_email, (err, result)=>{
+					Host.get_details(req.body.host_email, (err, host_details)=>{
+						// console.log(host_details);
 						if(err){
 							req.flash("error","Something went wrong... please try again");
 							res.redirect("/");
 						}else{
-							if(result == 0 && req.body.host_email != null && req.body.host_email.length > 0){
+							if(host_details == 0 && req.body.host_email != null && req.body.host_email.length > 0){
 								req.flash("error","Invalid Host Email!");
 								res.redirect("/visitor/checkIn");	
 							}else{
 
 								if(req.body.host_email==null || req.body.host_email.length==0){
 
-									Host.assignHostToVisitor((err, assignedHostEmail)=>{
+									Host.assignHostToVisitor((err, assignedHostDetail)=>{
 										if(err){
 											req.flash("error","Something went wrong... please try again");
 											res.redirect("/");
 										}else{
-											new_vis.host_email = assignedHostEmail;
+											new_vis.host_email = assignedHostDetail.host_email;
 											Visitor.checkIn(new_vis, (err, result)=>{
 												if(err){
 													console.log(err);
@@ -76,6 +78,19 @@ exports.checkIn = (req, res)=>{
 															console.log(err);
 														}
 													})
+													// console.log(host_details);
+													const _phone_ = Number(assignedHostDetail.host_phone);
+													var sms = {
+														to: _phone_,
+														body: "Visitor Details: Name: "+ new_vis.visitor_name + "Email: "+ new_vis.visitor_email + "Phone: " + new_vis.visitor_phone + "Check-in time: " + new Date()  
+													}
+
+													SMSSend.sendSMS(sms, (err, result)=>{
+														if(err){
+															console.log(err);
+														}
+													})
+													
 													req.flash("success","Successfully checked in as " + new_vis.visitor_name);
 													res.redirect("/");
 												}
@@ -106,6 +121,19 @@ exports.checkIn = (req, res)=>{
 													console.log(err);
 												}
 											});
+											// console.log(host_details);
+											const _phone_ = Number(host_details.host_phone);
+											var sms = {
+												to: _phone_,
+												body: "Visitor Details: Name: "+ new_vis.visitor_name + "Email: "+ new_vis.visitor_email + "Phone: " + new_vis.visitor_phone + "Check-in time: " + new Date()  
+											}
+
+											SMSSend.sendSMS(sms, (err, result)=>{
+												if(err){
+													console.log(err);
+												}
+											})
+
 											req.flash("success","Successfully checked in as " + new_vis.visitor_name);
 											res.redirect("/");
 										}
@@ -136,7 +164,7 @@ exports.checkOut = (req, res)=>{
 			}else{
 
 				const decryptedcode = cryptr.decrypt(userInfo.passcode);
-				console.log(decryptedcode);
+				// console.log(decryptedcode);
 				if(decryptedcode != req.body.passcode){
 					req.flash("error","Invalid email or passcode!");
 					res.redirect("/visitor/checkOut");
@@ -158,10 +186,20 @@ exports.checkOut = (req, res)=>{
 									subject: "Thanks for visiting!",
 									html: "<h2>Your Check-out details:</h2> <p><strong>Name: </strong> "+ userInfo.visitor_name+"<br></p><p><strong>Phone no.: </strong> "+userInfo.visitor_phone+
 									"<br></p><p><strong>Check-in time: </strong>"+userInfo.check_in+
-									"<br></p><p><strong>Check-out time: </strong>" +new Date() +"<br></p><p><strong>Host Name:</strong> "+host_data.host_name+"<br></p><p><strong>Address visited:</strong> Innovacer, noida, Delhi."
+									"<br></p><p><strong>Check-out time: </strong>" +new Date() +"<br></p><p><strong>Host Name:</strong> "+host_data.host_name+"<br></p><p><strong>Address visited:</strong> Innovacer, Noida, Delhi."
 								}
 				
 								EmailSend.sendEmail(data, (err, result)=>{
+									if(err){
+										console.log(err);
+									}
+								})
+								// console.log(userInfo);
+								var sms = {
+									to: userInfo.host_phone,
+									body: "Your check-out details: Name: " + userInfo.visitor_name +" Phone no.: " + userInfo.visitor_phone +" Check-in time: " + userInfo.check_in +" Check-out time: " + new Date() + " Host Name: " + host_data.host_name + " Address Visited: Innovacer, Noida, Delhi."
+								}
+								SMSSend.sendSMS(sms, (err, result)=>{
 									if(err){
 										console.log(err);
 									}

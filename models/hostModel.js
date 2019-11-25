@@ -35,16 +35,7 @@ Host.decrease_visitor_count = (hst_email, result)=>{
 Host.assignHostToVisitor = (result)=>{
 	db.query("SELECT * FROM host ORDER BY visitor_count ASC limit 1", (err, res)=>{
 		// console.log(res[0].host_email);
-		result(null, res[0].host_email);
-	});
-}
-
-Host.check_host_Email = (email, result)=>{
-	db.query("SELECT * from host where host_email='"+ email+"'", (err, res)=>{
-		if(res.length > 0)
-			result(null, res[0].email);
-		else
-			result(null, 0);
+		result(null, res[0]);
 	});
 }
 

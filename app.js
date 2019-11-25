@@ -17,6 +17,7 @@ app.use(require("express-session")({
     resave:false,
     saveUninitialized: false
 }));
+
 app.use(flash());
 
 app.use(function(req,res,next){
