@@ -37,7 +37,7 @@
 
 -   A new host can register him by clicking the **'Host Registration'** button.
 ---
--   Visitor can click on the **‘Visitor Check-in’** button and then a enter the required details with a passcode which is required at the time of check-out. 
+-   Visitor can click on the **‘Visitor Check-in’** button and then enter the required details with a passcode which is required at the time of check-out. 
 -   Passcode is added for security reasons so that no other person can check-out that visitor in unauthorized manner. 
 -   Passcode is stored in **encrypted** form in the database in a secure manner. 
 -   An email is sent to the visitor about the passcode so that if he forgets the passcode, he will check it.
