@@ -5,7 +5,7 @@ const client = require('twilio')(accountSid, authToken);
 
 exports.sendSMS = (data, result)=>{
     client.messages.create({
-        to: '+917597231794',
+        to: '+91' + data.to,
         from: '+12054303968',
         body:  data.body
     })
