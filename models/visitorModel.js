@@ -58,7 +58,7 @@ Visitor.checkOut = (vis_info, result)=>{
 Visitor.get_details = (vis_info, result)=>{
 
 	db.query("SELECT * from visitor where visitor_email='"+ vis_info.visitor_email+"'", (err, res)=>{
-		console.log(res[0]);
+		// console.log(res[0]);
 		if(res.length > 0)
 			result(null, res[0]);
 		else
