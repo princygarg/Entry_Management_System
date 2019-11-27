@@ -11,6 +11,10 @@
  - Node.js 12.13.1
  - MySQL database
  
+**I am using `Twillio` (free trial) for SMS. And in that, user must be verified in the phone numbers list of API Holder's Twillio Account. I am unable to find any free API by which SMS messages can be send to any number. If you want to check my web application SMS module, then you have to register yourself into Twillio and get `accountSID`, `authorization token` and `phone number` from there and update these 3 things in `send_sms.js` file. Also, you have to verify phone numbers used for testing purpose here https://www.twilio.com/console/phone-numbers/verified.**
+
+
+
 ### Dependencies 
  - For dependencies refer Package.json
 
@@ -43,7 +47,7 @@
 -   An email is sent to the visitor about the passcode so that if he forgets the passcode, he will check it.
 ---
 -   **Visitors can add host email or our system will assign a host which has minimum visitors at that time to that visitor automatically.**
--   An email is sent to the host about the details of that visitor accordingly. 
+-   An email and SMS are sent to the host about the details of that visitor accordingly. 
 ---
 -   For check-out click on the **‘Visitor Check-out’** button and then he has to enter his email ID with the passcode.
--   An email is sent to the visitor about his check-out details.
+-   An email and SMS are sent to the visitor about his check-out details.
