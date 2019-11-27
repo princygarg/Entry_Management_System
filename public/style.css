@@ -21,14 +21,14 @@ label {
 
 .jumbotron {
 	/* border-bottom:2px solid gray; */
-	background-image: linear-gradient(to bottom , blue, #cce0ff);
+	background-image: linear-gradient(to bottom , #0066ff 15%, #66ffff 77%);
 }
-body{
+/* body{
 	background-color: #e6f0ff;
-}
+} */
 
 .card-body{
 	border: 1px solid gray;
 	border-radius: 5px;
-	background-color: #e6f0ff;
+	/* background-color: #e6f0ff; */
 }

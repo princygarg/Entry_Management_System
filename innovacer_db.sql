@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 24, 2019 at 12:05 PM
+-- Generation Time: Nov 27, 2019 at 05:01 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -32,7 +32,7 @@ CREATE TABLE `host` (
   `host_id` int(11) NOT NULL,
   `host_name` varchar(20) NOT NULL,
   `host_email` varchar(50) NOT NULL,
-  `host_phone` int(12) NOT NULL,
+  `host_phone` varchar(12) NOT NULL,
   `visitor_count` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -46,7 +46,7 @@ CREATE TABLE `visitor` (
   `visitor_id` int(11) NOT NULL,
   `visitor_name` varchar(20) NOT NULL,
   `visitor_email` varchar(50) NOT NULL,
-  `visitor_phone` int(12) NOT NULL,
+  `visitor_phone` varchar(12) NOT NULL,
   `check_in` timestamp NOT NULL DEFAULT current_timestamp(),
   `host_email` varchar(50) NOT NULL,
   `passcode` text NOT NULL
@@ -79,13 +79,13 @@ ALTER TABLE `visitor`
 -- AUTO_INCREMENT for table `host`
 --
 ALTER TABLE `host`
-  MODIFY `host_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `host_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `visitor`
 --
 ALTER TABLE `visitor`
-  MODIFY `visitor_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
+  MODIFY `visitor_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
 
 --
 -- Constraints for dumped tables
