@@ -228,7 +228,7 @@ exports.checkOut = (req, res)=>{
 								//send sms to visitor about his/her check-out
 								var sms = {
 									to: userInfo.visitor_phone,
-									body: "Your check-out details: Name: " + userInfo.visitor_name +" Phone no.: " + userInfo.visitor_phone +" Check-in time: " + userInfo.check_in +" Check-out time: " + new Date() + " Host Name: " + host_data.host_name + " Address Visited: Innovacer, Noida, Delhi."
+									body: "Your check-out details: Name: " + userInfo.visitor_name +" Email: " + userInfo.visitor_email +" Check-in time: " + userInfo.check_in +" Check-out time: " + new Date() + " Host Name: " + host_data.host_name + " Address Visited: Innovacer, Noida, Delhi."
 								}
 
 								SMSSend.sendSMS(sms, (err, result)=>{
