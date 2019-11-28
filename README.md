@@ -13,6 +13,7 @@
  
 **I am using `Twillio` (free trial) for SMS. And in that, user must be verified in the phone numbers list of API Holder's Twillio Account. I am unable to find any free API by which SMS messages can be send to any number. If you want to check my web application SMS module, then you have to register yourself into Twillio and get `accountSID`, `authorization token` and `phone number` from there and update these 3 things in `send_sms.js` file. Also, you have to verify phone numbers used for testing purpose here https://www.twilio.com/console/phone-numbers/verified.**
 
+**Messages are only delivered between the hours of 9 A.M. and 9 P.M. local Indian time.**
 
 
 ### Dependencies 
