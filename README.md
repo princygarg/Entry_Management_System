@@ -45,16 +45,31 @@
          
 
 ### APPLICATION FEATUERES AND DETAILS
+![](screenshots/Screenshot%20(17).png)
 
 -   A new host can register him by clicking the **'Host Registration'** button.
 ---
 -   Visitor can click on the **‘Visitor Check-in’** button and then enter the required details with a passcode which is required at the time of check-out. 
+
+![](screenshots/Screenshot%20(18).png)
+
 -   Passcode is added for security reasons so that no other person can check-out that visitor in unauthorized manner. 
 -   Passcode is stored in **encrypted** form in the database in a secure manner. 
 -   An email is sent to the visitor about the passcode so that if he forgets the passcode, he will check it.
+
+![](screenshots/Screenshot%20(21).png)
+
 ---
 -   **Visitors can add host email or our system will assign a host which has minimum visitors at that time to that visitor automatically.**
 -   An email and SMS are sent to the host about the details of that visitor accordingly. 
+
+![](screenshots/Screenshot%20(24).png)
+![](screenshots/WhatsApp%20Image%202019-13-01%20at%206.55.02%20PM_LI.jpg)
+
 ---
 -   For check-out click on the **‘Visitor Check-out’** button and then he has to enter his email ID with the passcode.
 -   An email and SMS are sent to the visitor about his check-out details.
+
+![](screenshots/Screenshot%20(19).png)
+![](screenshots/Screenshot%20(22)_LI.jpg)
+![](screenshots/WhatsApp%20Image%202019-12-01%20at%206.55.02%20PM.jpeg)
