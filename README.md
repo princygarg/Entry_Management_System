@@ -3,7 +3,7 @@
 ### DESCRIPTION
 
  -    A web application for the entry management. This must be installed at the main entrance of the company or at the entrance       of that place where the event will take place. 
- -    It is handled by the visitor himself/herself. There is no need for any third party to do this work. This way we can      reduce the labor cost.
+ -    It is handled by the visitor himself/herself. There is no need for any third party to do this work. This way we can      reduce the labour cost.
 
 
 ### BASIC REQUIREMENTS
@@ -27,9 +27,9 @@
 
 
 ### INSTALLATION INSTRUCTIONS
--   Clone or download the repo. into your local system.
+-   Clone or download the repo into your local system.
 -   Cd into that root folder you just cloned locally.
--   install all dependencies which are written in the packet.json file, type
+-   install all dependencies which are written in the package.json file, type
     ```
     npm install
     ```
